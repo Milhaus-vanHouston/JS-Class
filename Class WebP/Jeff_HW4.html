@@ -1,0 +1,164 @@
+<html>
+<head>
+
+<title></title>
+
+<style type="text/css">
+
+body {
+	background-color: #454F8C;
+	font-family: arial;
+	color: #454F8C;
+}
+
+#contentwrap {
+	background: #F4F5E7;
+	border: 8px #FF9E01 solid;
+	padding: 20px;
+	width: 600px;
+	margin: 20px auto 0px auto;
+	border-radius: 25px;
+	text-align: center;
+}
+
+#heading {
+	font-size: 2.2em;
+	border-bottom: 6px #484452 double;
+	padding: 10px 0px 10px 0px;
+}
+
+.formtext {
+	margin-top: 8px;
+	width: 200px;
+}
+
+.formfield {
+	padding: 4px;
+	border: 2px darkred solid;
+	font-size: 1.2em;
+	color: red;
+	font-weight: bold;
+}
+
+#calcbutton {
+	background: #003366;
+	color: #FFFFFF;
+	padding: 5px 0px 5px 0px;
+	width: 150px;
+	border: 3px #CCCC99 solid;
+	border-radius: 25px;
+	cursor: pointer;
+	font-size: 1.1em;
+}
+
+#calcbutton:hover {
+	background: #CCCCCC;
+	color: #003366;
+	border: 3px #003366 solid;
+}
+
+</style>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+
+$(document).ready( function() {
+	
+	$("#calcbutton").on( "click", function() {
+		
+		var name = $("#name").val();
+		
+		var budget = parseInt( $("#budget").val() );
+		
+		var food = parseInt( $("#food").val() );
+		
+		var gas = parseInt( $("#gas").val() );
+		
+		var entertainment = parseInt( $("#entertainment").val() );
+		
+		var msg = name + budget + food + gas + entertainment;
+		
+		// calculation for month 
+		
+		var month = budget - food - gas - entertainment;
+		
+		
+		// make the output
+		var msg = "<div>My Name is " + name + "</div>";
+		msg += "<div>Monthly Budget is " + budget + "</div>";
+		msg += "<div>Food expense is " + food + "</div>";
+		msg += "<div>Gas expense is " + gas + "</div>";
+		msg += "<div>entertainment expense is " + entertainment + "</div>";
+		money = "<div>Total money left after expenses is $" + month + "</div>";
+		
+		
+		// If statement for money left and do not have money
+		
+		if( month < 0) {
+		
+			msg += "<div id='month'> You DO NOT have enough money to cover your expenses</div>";
+		}
+		else {
+		
+			msg += money;
+		}
+			
+			
+			
+		// output to the browser
+		$("#output").html( msg );
+	
+	
+	
+	
+	
+	
+	
+	} ); // finished click button
+		
+		
+} ); // document.ready
+
+</script>
+
+</head>
+<body>
+
+<div id="contentwrap">
+
+	<div id="heading">Household Budget Calculator</div>
+
+	<form>
+
+		<div class="formtext">Enter name</div>
+		<input type="text" class="formfield" id="name">
+		
+		<div class="formtext">Enter monthly budget</div>
+		<input type="text" class="formfield" id="budget">
+		
+		<div class="formtext">Enter monthly food expense</div>
+		<input type="text" class="formfield" id="food" >
+		
+		<div class="formtext">Enter monthly gas expense</div>
+		<input type="text" class="formfield" id="gas">
+		
+		<div class="formtext">Enter monthly entertainment expense</div>
+		<input type="text" class="formfield" id="entertainment">
+
+		<div style="margin-top: 10px;">
+			<input type="button" value="Calculate Budget" id="calcbutton">
+		</div>
+
+	</form>
+
+	<div id="output" style="margin-top:10px;"></div>
+
+</div> <!-- ends div#contentwrap -->
+
+</body>
+</html>
+
+
+
